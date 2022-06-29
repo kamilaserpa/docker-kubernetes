@@ -65,7 +65,7 @@ Já uma VM possui sistema operacional próprio, tamanho de GBs e pode executar d
    - `docker logs -f <id ou nome>`, com a flag "-f" (follow) mostra os logs em tempo real. Ctrl+C para sair.
 
  - Removendo containers
-   - `docker -rm <id ou nome>`. Se o container estiver em execução podemos adicionar a flag `-f`(force) que para o container e em seguida o remove da memória local, ex.: `docker -rm <id ou nome> -f`.
+   - `docker rm <id ou nome>`. Se o container estiver em execução podemos adicionar a flag `-f`(force) que para o container e em seguida o remove da memória local, ex.: `docker rm <id ou nome> -f`.
 
 [docker run command line documentation](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -76,7 +76,7 @@ Ao executar um container baseado numa imagem, as instruções serão executadas 
 
 Imagens podem ser baixadas em https://hub.docker.com, porém qualquer pessoa pode fazer upload de uma imagem, portanto é importante observar imagens oficiais, quantidade de downloads e quantidade de stars para então optar pela utilização de uma imagem específica.
 
-## Criando uma imagem
+### Criando uma imagem
 
 Para criar uma imagem é necessário um arquivo `Dockerfile` dentro do projeto.
 Esse arquivo deve conter instruções para serem executadas:
@@ -94,12 +94,29 @@ Utilizamos o _node_ para criar uma imagem de exemplo, instalamos o express e exe
 ```
 Na pasta [1_imagens_e_containers](1_imagens_e_containers) adicionamos o arquivo `Dockerfile`:
 
-```docker
+```dockerfile
   FROM node --> utiliza imagem do node
   WORKDIR /app --> doretorio que executa a aplicação no  container
-  COPY package*.json . --> copia arquivos package.json para o diretório raiz app
+  COPY package*.json ./ --> copia arquivos package.json para o diretório raiz app
   RUN npm install --> instala as dependẽncias definida sno package.json
   COPY . . --> copia os demais arquivos da aplicação para o container
   EXPOSE 3000 --> expões porta 3000, condizente com a aplicação
   CMD ["node", "app.js"] --> comando que inicializa a aplicação
 ```
+
+### Executando uma imagem
+
+Precisamos construir a imagem através do comando `docker build <diretório da imagem`>.
+Em seguida executamos com `docker run <id ou nome>`. <br>
+No nosso exemplo acessamos a pasta [1_imagens_e_containers](1_imagens_e_containers) pelo terminal e executamos o comando abaixo para criar a imagem ainda sem nome e tag:
+  `docker build .`
+
+Capturando id da imagem: `docker imagem ls`.
+
+Executando um container a partir da imagem criada:
+`docker -d -p 3000:3000 <id da imagem>`.
+
+É possível criar container nomeado: 
+`docker -d -p 3000:3000 --name meu_node <id da imagem>`.
+
+Após isso a mensagem estabelecida em [app.js](1_imagens_e_containers/app.js) deve estar disponível no navegador em _http://localhost:3000_.

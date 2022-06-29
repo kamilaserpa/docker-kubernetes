@@ -76,3 +76,30 @@ Ao executar um container baseado numa imagem, as instruções serão executadas 
 
 Imagens podem ser baixadas em https://hub.docker.com, porém qualquer pessoa pode fazer upload de uma imagem, portanto é importante observar imagens oficiais, quantidade de downloads e quantidade de stars para então optar pela utilização de uma imagem específica.
 
+## Criando uma imagem
+
+Para criar uma imagem é necessário um arquivo `Dockerfile` dentro do projeto.
+Esse arquivo deve conter instruções para serem executadas:
+ - FROM: imagem base
+ - WORKDIR: diretório da aplicação
+ - EXPOSE: porta da palicação
+ - COPY: quais arquivos precisam ser copiados
+
+Utilizamos o _node_ para criar uma imagem de exemplo, instalamos o express e executamos a aplicação localmente com os seguintes comandos:
+
+```
+  npm init -y
+  npm install express
+  node app.js
+```
+Na pasta [1_imagens_e_containers](1_imagens_e_containers) adicionamos o arquivo `Dockerfile`:
+
+```docker
+  FROM node --> utiliza imagem do node
+  WORKDIR /app --> doretorio que executa a aplicação no  container
+  COPY package*.json . --> copia arquivos package.json para o diretório raiz app
+  RUN npm install --> instala as dependẽncias definida sno package.json
+  COPY . . --> copia os demais arquivos da aplicação para o container
+  EXPOSE 3000 --> expões porta 3000, condizente com a aplicação
+  CMD ["node", "app.js"] --> comando que inicializa a aplicação
+```

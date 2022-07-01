@@ -172,3 +172,6 @@ O comando é `docker start -it <container>`, por exemplo:
 O comando `docker rmi <id da imagem>` remove uma imagem específica.
 Ao tentar remover imagens que estão sendo utilizadas por um container, é apresentado um erro no terminal.
 A flag `-f` pode ser utilizada para forçar a remoção da imagem, por exemplo: `docker rmi -f <nome>:<tag>`.
+
+### Removendo imagens e containers
+Com o comando `docker system prune` o docker remove o que não está utilizando (imagens, containers, networks).

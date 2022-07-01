@@ -69,6 +69,9 @@ Já uma VM possui sistema operacional próprio, tamanho de GBs e pode executar d
 
 [docker run command line documentation](https://docs.docker.com/engine/reference/commandline/run/).
 
+### Mais informações sobre Comandos
+Todo comando no Docker tem acesso a uma flag `--help`. Desse modo visualizamos todas as opções disponíveis, por exemplo `docker run --help`.
+
 ## Imagens
 
 Imagens são originadas de arquivos programados para que o Docker crie uma estrutura, essa estrutura pode execitar determinadas ações em containers.

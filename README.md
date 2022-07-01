@@ -145,3 +145,11 @@ Podemos inicializar vários containers com a mesma imagem. As aplicações funci
 Para testar podemos determinar uma porta diferente para cada aplicação e executar em modo _detached_.
 `docker run -d -p 3000:3000 --name meu_node1 <id da imagem>`
 `docker run -d -p 4000:3000 --name meu_node2 <id da imagem>`
+
+### Alterando o nome da imagem e tag
+O comando `docker tag <id da imagem> <novo nome da imagem>` é utilizado para nomear as imagens.
+Também é possível modificar a tag, que funciona como uma versão da imagem com `docker tag <id da imagem> <nome>:<tag>`.
+Para visualizar as imagens utilize `docker images`.
+Por exemplo: 
+`docker tag 73daf1d5c391 minhaimagem`
+`docker tag 73daf1d5c391 minhaimagem:tag1`

@@ -79,7 +79,7 @@ Ao executar um container baseado numa imagem, as instruções serão executadas 
 
 Imagens podem ser baixadas em https://hub.docker.com, porém qualquer pessoa pode fazer upload de uma imagem, portanto é importante observar imagens oficiais, quantidade de downloads e quantidade de stars para então optar pela utilização de uma imagem específica.
 
-### Criando uma imagem
+### Criando uma imagem e avançando em containers
 
 Para criar uma imagem é necessário um arquivo `Dockerfile` dentro do projeto.
 Esse arquivo deve conter instruções para serem executadas:
@@ -139,3 +139,9 @@ Podemos fazer o download de alguma imagem do hub e deixá-la disponível em noss
 Utilizando o comando `docker pull<nome da imagem>`.
 Por exemplo podemos baixar a imagem do python: `docker pull python`.
 
+### Múltiplas aplicações, mesmo container
+
+Podemos inicializar vários containers com a mesma imagem. As aplicações funcionarão em paralelo.
+Para testar podemos determinar uma porta diferente para cada aplicação e executar em modo _detached_.
+`docker run -d -p 3000:3000 --name meu_node1 <id da imagem>`
+`docker run -d -p 4000:3000 --name meu_node2 <id da imagem>`

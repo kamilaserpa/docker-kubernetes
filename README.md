@@ -136,7 +136,7 @@ O restante permanece em cache (as instruções nas linhas anteriores à alteraç
 
 ### Download de imagens
 Podemos fazer o download de alguma imagem do hub e deixá-la disponível em nosso ambiente.
-Utilizando o comando `docker pull<nome da imagem>`.
+Utilizando o comando `docker pull <nome da imagem>`.
 Por exemplo podemos baixar a imagem do python: `docker pull python`.
 
 ### Múltiplas aplicações, mesmo container
@@ -159,3 +159,11 @@ Podemos nomear a imagem no momento da sua criação com a flag `-t`.
 Por exemplo: 
  - `docker build -t meu_node3 .`
  - `docker build -t meu_node3: tag1 .`
+
+### Reiniciando container com interatividade
+Com o comando `start`é possível utilizar um container criado anteriormente, sem criar um novo. A flag `-it`pode ser utilizada com o comando _start_ também.
+O comando é `docker start -it <container>`, por exemplo: 
+ - `docker stop meu_node2` para a execução do container de nome "meu_node2", pode ser utilizado o id também
+ - `docker ps -a` lista os caontainers existentes
+ - `docker start meu_node2` reinicializa o container meu_node2
+ - `docker start -i meu_node2` reinicializa o container meu_node2 habilitando o terminal interativo. `Ctrl+c` encerra a interação.

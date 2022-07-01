@@ -32,7 +32,7 @@ Repositório Docker para encontrar imagens: https://hub.docker.com/.
 
 ### Container vs Virtual Machine (VM)
 
-Container é uma aplicação que serve para um detemrinado fim. Seu tamanho é de MBs. Utilizam menos recursos e tem usos específicos, isolando funcionalidades. <br>
+Container é uma aplicação que serve para um derminado fim. Seu tamanho é de MBs. Utilizam menos recursos e tem usos específicos, isolando funcionalidades. <br>
 Já uma VM possui sistema operacional próprio, tamanho de GBs e pode executar diversas funções ao mesmo tempo, utilizando mais recursos.
 
 ### Alguns comandos
@@ -46,10 +46,10 @@ Já uma VM possui sistema operacional próprio, tamanho de GBs e pode executar d
    - `docker run -it <imagem>`, a flag `-it` pode ser adicionada ao comando `run` possibilita executar comandos disponíveis no container através de terminal interativo, ex.: `docker run -it node`.
 
  - Execução em background
-   - `docker run nginx -d`, ao adicionar a flag `-d` (detached) o temrinal fica livre para receber novos comandos.
+   - `docker run nginx -d`, ao adicionar a flag `-d` (detached) o terminal fica livre para receber novos comandos.
 
  - Expondo porta
-   - containers docker não tem conexão com nada externo a eles. A flag `-p <porta_local_de_acesso>:<porta_do_container>` expõe portas para que o container fique acessível, ex.: `docker run -d -p 3000:80 nginx`, senod possível acessar o serviço em "http://localhost:3000".
+   - containers docker não tem conexão com nada externo a eles. A flag `-p <porta_local_de_acesso>:<porta_do_container>` expõe portas para que o container fique acessível, ex.: `docker run -d -p 3000:80 nginx`, sendo possível acessar o serviço em "http://localhost:3000".
 
  - Parando containers
    - `docker stop <id ou nome>`, para a execução do container e libera recursos por ele utilizados
@@ -87,11 +87,12 @@ Esse arquivo deve conter instruções para serem executadas:
 
 Utilizamos o _node_ para criar uma imagem de exemplo, instalamos o express e executamos a aplicação localmente com os seguintes comandos:
 
-```
+```sh
   npm init -y
   npm install express
   node app.js
 ```
+
 Na pasta [1_imagens_e_containers](1_imagens_e_containers) adicionamos o arquivo `Dockerfile`:
 
 ```dockerfile
@@ -120,3 +121,12 @@ Executando um container a partir da imagem criada:
 `docker -d -p 3000:3000 --name meu_node <id da imagem>`.
 
 Após isso a mensagem estabelecida em [app.js](1_imagens_e_containers/app.js) deve estar disponível no navegador em _http://localhost:3000_.
+
+Para remover uma imagem execute: `docker rmi <id da imagem>`.
+
+### Camadas das imagens
+
+As imagens do Docker são divididas em camadas (layers).
+Cada instrução no DOckerfile representa uma _layer_. 
+Quando algo é atualizado, apenas as _layers_ após a linha alterada são refeitas.
+O restante permanece em cache (as instruções nas linhas anteriores à alteração), tornando o build mais rápido.

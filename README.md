@@ -130,3 +130,9 @@ As imagens do Docker são divididas em camadas (layers).
 Cada instrução no DOckerfile representa uma _layer_. 
 Quando algo é atualizado, apenas as _layers_ após a linha alterada são refeitas.
 O restante permanece em cache (as instruções nas linhas anteriores à alteração), tornando o build mais rápido.
+
+### Download de imagens
+Podemos fazer o download de alguma imagem do hub e deixá-la disponível em nosso ambiente.
+Utilizando o comando `docker pull<nome da imagem>`.
+Por exemplo podemos baixar a imagem do python: `docker pull python`.
+

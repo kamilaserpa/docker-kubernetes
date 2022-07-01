@@ -153,3 +153,9 @@ Para visualizar as imagens utilize `docker images`.
 Por exemplo: 
 `docker tag 73daf1d5c391 minhaimagem`
 `docker tag 73daf1d5c391 minhaimagem:tag1`
+
+## Iniciando imagem com um nome
+Podemos nomear a imagem no momento da sua criação com a flag `-t`.
+Por exemplo: 
+ - `docker build -t meu_node3 .`
+ - `docker build -t meu_node3: tag1 .`

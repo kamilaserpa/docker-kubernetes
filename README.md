@@ -175,3 +175,11 @@ A flag `-f` pode ser utilizada para forçar a remoção da imagem, por exemplo: 
 
 ### Removendo imagens e containers
 Com o comando `docker system prune` o docker remove o que não está utilizando (imagens, containers, networks).
+
+### Remoção de Container após utilizado
+
+Um container pode ser automaticamente deletado após sua utilização. Para isso utiliza-se a flag `--rm`, o comando é `docker run --rm <container>`
+O container após parado não é listado por `docker ps -a`, possibilitando economia de espaço no computador e deixando o ambiente local mais organizado.
+ - `docker run -d -p 3001:3000 --name node_3 --rm meu_node3`, executa container, onde "node_3" é o nome do container sendo criado e "meu_node3" é o nome da imagem
+ - `docker stop 05d7`, para container de id 05d7
+ - `docker ps -a`, lista todos os container, inclusive os que não estão em execução no momento, e visualiza-se que o container "node_3" não é listado.

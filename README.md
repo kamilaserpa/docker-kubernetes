@@ -167,3 +167,8 @@ O comando é `docker start -it <container>`, por exemplo:
  - `docker ps -a` lista os caontainers existentes
  - `docker start meu_node2` reinicializa o container meu_node2
  - `docker start -i meu_node2` reinicializa o container meu_node2 habilitando o terminal interativo. `Ctrl+c` encerra a interação.
+
+### Removendo imagens
+O comando `docker rmi <id da imagem>` remove uma imagem específica.
+Ao tentar remover imagens que estão sendo utilizadas por um container, é apresentado um erro no terminal.
+A flag `-f` pode ser utilizada para forçar a remoção da imagem, por exemplo: `docker rmi -f <nome>:<tag>`.

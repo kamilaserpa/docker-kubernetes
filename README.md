@@ -183,3 +183,9 @@ O container após parado não é listado por `docker ps -a`, possibilitando econ
  - `docker run -d -p 3001:3000 --name node_3 --rm meu_node3`, executa container, onde "node_3" é o nome do container sendo criado e "meu_node3" é o nome da imagem
  - `docker stop 05d7`, para container de id 05d7
  - `docker ps -a`, lista todos os container, inclusive os que não estão em execução no momento, e visualiza-se que o container "node_3" não é listado.
+
+### Copiando arquivos entre containers
+O comando `docker cp` pode ser utilizado para copiar um arquivo de um diretório para um container ou de um container para um diretório determinado.
+
+ - Executamos o container com o comando: `docker run -d -p 3000:3000 --name meu_node2 --rm minhaimagem`
+ - Em seguida copiamos o arquivo "app.ja" do container para nosso diretório local "./copia" : `docker cp meu_node2:/app/app.js ./copia`.

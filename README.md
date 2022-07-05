@@ -189,3 +189,8 @@ O comando `docker cp` pode ser utilizado para copiar um arquivo de um diretório
 
  - Executamos o container com o comando: `docker run -d -p 3000:3000 --name meu_node2 --rm minhaimagem`
  - Em seguida copiamos o arquivo "app.ja" do container para nosso diretório local "./copia" : `docker cp meu_node2:/app/app.js ./copia`.
+
+### Verificar informações de processamento
+Para verificar dados de execução de um container utilizamos `docker top <container>`.
+Teremos acesso a informação de quando ele foi iniciado, o id do processo e a descrição do comando CMD.
+Por exemplo: `docker top meu_node2`.
